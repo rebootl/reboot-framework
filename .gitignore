@@ -1,4 +1,7 @@
 /admin/node_modules
 /website/node_modules
 /db/db.sqlite
+/dbscripts/db-export
+/index-my.html
+/schema.sql
 .env
