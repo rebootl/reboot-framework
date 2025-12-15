@@ -20,8 +20,8 @@ export default (locale: EntryLocale, entries: EntryType[]) =>
   html`
     <section class="space-y-8 mx-auto">
       <header class="space-y-3 text-left">
-        <h1 class="text-4xl font-bold text-white">Entries</h1>
-        <p class="text-dark-muted text-sm md:text-base max-w-3xl">
+        <h1 class="text-lg font-bold text-white">Entries</h1>
+        <p class="text-dark-muted text-sm max-w-3xl">
           ${locale.description}
         </p>
       </header>
@@ -31,9 +31,9 @@ export default (locale: EntryLocale, entries: EntryType[]) =>
         ${locale.emptyState}
       </div>`
         : `
-      <div class="border border-dark-border bg-dark-surface/40 shadow-lg overflow-auto">
+      <div class="border border-dark-border bg-dark-bg shadow-lg overflow-auto">
         <table class="min-w-full text-sm text-left text-dark-muted">
-          <thead class="bg-dark-bg/50 text-xs uppercase tracking-[0.3em] text-dark-muted/80">
+          <thead class="bg-dark-surface text-xs uppercase tracking-[0.3em] text-dark-muted/80">
             <tr>
               <th class="px-4 py-3">Type</th>
               <th class="px-4 py-3">Title</th>
@@ -63,7 +63,7 @@ export default (locale: EntryLocale, entries: EntryType[]) =>
                     <td class="px-4 py-4">
                       <a
                         href="/cms/entries/edit/${entry.id}"
-                        class="inline-flex items-center px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] rounded-md bg-indigo-900 text-white hover:bg-indigo-800"
+                        class="inline-flex items-center px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] border border-dark-border rounded-md bg-gray-700 text-white hover:bg-gray-600 transition-colors"
                       >
                         EDIT
                       </a>

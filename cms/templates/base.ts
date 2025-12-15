@@ -58,9 +58,10 @@ export default (content: string, req: Request) => {
           theme: {
             extend: {
               colors: {
-                dark: {
-                  bg: "#0f1419",
-                  surface: "#1a1f2e",
+                 dark: {
+                   bg: "#0f1419",
+                   surface: "#252a35",
+
                   border: "#2d3748",
                   text: "#fff",
                   muted: "#a1a1aa",
