@@ -16,7 +16,7 @@ declare global {
 // Factory function to create language app with custom cookie name and endpoint
 export function createLanguageApp(
   cookieName: string = "lang",
-  _endpointPath: string = "/set-lang",
+  endpointPath: string = "/set-lang",
 ) {
   const app = express();
 
@@ -44,7 +44,7 @@ export function createLanguageApp(
   });
 
   // Endpoint to set language cookie
-  app.use((req: Request, res: Response) => {
+  app.get(endpointPath, (req: Request, res: Response) => {
     // console.log('Setting language cookie');
     const lang = req.query.lang || "en";
     if (lang !== "en" && lang !== "de") {
