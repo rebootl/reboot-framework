@@ -1,3 +1,5 @@
+// @ts-types="npm:@types/express@5"
+
 import type { Request, Response } from "express";
 
 import { html } from "../../../lib/helper.ts";
@@ -30,7 +32,7 @@ const locale = {
 };
 
 export default (req: Request, res: Response) => {
-  const currentLanguage = req.lang || "en";
+  const currentLanguage = req.lang;
   const content = html`
     <section class="space-y-8 py-10">
       <header class="text-center space-y-2">
