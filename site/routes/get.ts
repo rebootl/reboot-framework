@@ -29,7 +29,7 @@ const template = (entry: Entry) =>
     <!-- Welcome Section -->
     <article class="relative bg-dark-bg shadow-xl">
       <div
-        class="grid grid-cols-1 md:grid-cols-2 md:[grid-template-columns:1fr_12rem] md:items-center gap-8"
+        class="grid grid-cols-1 md:grid-cols-[1fr_12rem] md:items-center gap-8"
       >
         <!-- Main column (text + links) -->
         <div class="flex-1">
