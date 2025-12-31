@@ -25,17 +25,16 @@ function getContent(req: Request) {
   }
 }
 
-const template = async (entry: Entry) =>
+const template = (entry: Entry) =>
   html`
-    <!-- Welcome Section -->
     <div class="md-content">
-      ${await marked.parse(entry.content)}
+      ${marked.parse(entry.content) as string}
     </div>
   `;
 
-export default async (req: unknown, res: Response) => {
-  const entry = getContent(req as Request);
-  const content = await template(entry);
+export default (req: Request, res: Response) => {
+  const entry = getContent(req);
+  const content = template(entry);
 
   const html = baseTemplate(entry.title, content, entry.modified_at);
   res.send(html);

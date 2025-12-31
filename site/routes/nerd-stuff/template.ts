@@ -8,10 +8,10 @@ export type Entry = {
   modified_at: string;
 };
 
-export default async (entries: Entry[], entry: Entry) =>
+export default (entries: Entry[], entry: Entry) =>
   html`
     <div class="md-content mb-8">
-      ${await marked.parse(entry.content || "")}
+      ${marked.parse(entry.content || "") as string}
     </div>
     <ul class="space-y-2">
       ${entries.length === 0

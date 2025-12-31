@@ -37,11 +37,11 @@ function getEntries(req: Request) {
   }
 }
 
-export default async (req: Request, res: Response) => {
+export default (req: Request, res: Response) => {
   const entry = getContent(req);
   const entries = getEntries(req);
 
-  const content = await template(entries, entry);
+  const content = template(entries, entry);
   const html = baseTemplate(entry.title, content, entry.modified_at);
   res.send(html);
 };
