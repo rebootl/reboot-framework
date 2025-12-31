@@ -5,3 +5,14 @@ export const html = (
 ): string => {
   return _strings.reduce((acc, str, i) => acc + str + (_values[i] || ""), "");
 };
+
+export const formatDate = (isoString: string, locale = "en-US") => {
+  const date = new Date(isoString);
+  return new Intl.DateTimeFormat(locale, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  }).format(date);
+};

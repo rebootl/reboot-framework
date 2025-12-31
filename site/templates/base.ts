@@ -1,4 +1,4 @@
-import { html } from "../../lib/helper.ts";
+import { html, formatDate } from "../../lib/helper.ts";
 
 export const baseTemplate = (title: string, content: string, modificationDate: string) => {
   // const ref = req.path || '';
@@ -115,9 +115,10 @@ export const baseTemplate = (title: string, content: string, modificationDate: s
                 ${title}
               </h1>
               ${content}
-              <div class="mt-8 pt-6 border-t border-dark-border text-sm text-dark-muted">
-                <p>Last modified: <time datetime="2025-11-15">${modificationDate}</time></p>
-              </div>
+                <div class="mt-8 pt-6 border-t border-dark-border text-sm text-dark-muted">
+                <p>Last modified: <time datetime="${modificationDate}">${formatDate(modificationDate)}</time></p>
+               </div>
+
             </div>
           </article>
         </main>
