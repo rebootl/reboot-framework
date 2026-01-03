@@ -9,6 +9,8 @@ const locale = {
     "nav": {
       "dashboard": "Dashboard",
       "entries": "Entries",
+      "links": "Links",
+      "linkTags": "Link Tags",
       "settings": "Settings",
       "users": "Users",
       "logout": "Logout",
@@ -21,6 +23,8 @@ const locale = {
     "nav": {
       "dashboard": "Dashboard",
       "entries": "Einträge",
+      "links": "Links",
+      "linkTags": "Link-Tags",
       "settings": "Einstellungen",
       "users": "Benutzer",
       "logout": "Abmelden",
@@ -83,10 +87,12 @@ export default (content: string, req: Request) => {
               <p class="text-dark-muted">reboot.li - CMS</p>
             </div>
             <div class="flex flex-wrap items-center gap-3 text-sm text-dark-muted">
-              ${loggedIn
-                ? `
+            ${loggedIn
+              ? `
             <a href="/cms" class="hover:text-emerald-300 transition">${navLabels.dashboard}</a>
             <a href="/cms/entries" class="hover:text-emerald-300 transition">${navLabels.entries}</a>
+            <a href="/cms/links" class="hover:text-emerald-300 transition">${navLabels.links}</a>
+            <a href="/cms/link-tags" class="hover:text-emerald-300 transition">${navLabels.linkTags}</a>
             <a href="/cms/logout" class="hover:text-emerald-300 transition">${navLabels.logout}</a>
             <span class="text-dark-border px-2">|</span>
           `
