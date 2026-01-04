@@ -53,9 +53,10 @@ class MultiSelector extends HTMLElement {
       if (selectedOption) {
         const value = selectedOption.value;
         const existingOption = this.baseSelectElement.querySelector(`option[value="${value}"]`);
-        if (!existingOption || !existingOption.selected) {
+        if (!existingOption.selected) {
           existingOption.setAttribute('selected', '');
-          this.addListElement(value);
+          const text = selectedOption.textContent;
+          this.addListElement(value, text);
         }
       }
   }
@@ -65,24 +66,26 @@ class MultiSelector extends HTMLElement {
    */
   removeItem(e) {
     e.preventDefault();
-    const itemName = e.target.getAttribute('data-item-name');
+    const itemId = e.target.getAttribute('data-item-id');
     const listItem = e.target.parentNode;
     this.listElement.removeChild(listItem);
+    console.log(itemId)
 
-    const option = this.baseSelectElement.querySelector(`option[value="${itemName}"]`);
+    const option = this.baseSelectElement.querySelector(`option[value="${itemId}"]`);
     option.removeAttribute('selected');
   }
 
   /**
+   * @param {string} id
    * @param {string} text
    */
-  addListElement(text) {
+  addListElement(id, text) {
     const newListitem = this.selectedItemTemplate.content.cloneNode(true);
     const span = newListitem.querySelector('span');
     span.textContent = text;
 
     const removeButton = newListitem.querySelector('.remove-button');
-    removeButton.setAttribute('data-item-name', text);
+    removeButton.setAttribute('data-item-id', id);
     removeButton.addEventListener('click', (e) => this.removeItem(e));
     this.listElement.appendChild(newListitem);
   }

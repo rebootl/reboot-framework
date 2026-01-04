@@ -1,11 +1,5 @@
 import { html } from "../../../../../lib/helper.ts";
-
-const escapeHtml = (value: string): string =>
-  value.replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
+import multiSelector from "../../../../templates/multi-selector.ts";
 
 export type LinkEditFormData = {
   id: number;
@@ -14,12 +8,19 @@ export type LinkEditFormData = {
   comment: string;
 };
 
-export default (link: LinkEditFormData) =>
+export default (
+  link: LinkEditFormData,
+  tags: Array<{
+    id: number;
+    name: string;
+    selected: boolean;
+  }>,
+) =>
   html`
     <section class="max-w-3xl mx-auto space-y-6">
       <form
         class="space-y-6 rounded-xl bg-dark-surface/50 border border-dark-border p-8 pt-6"
-        action="/cms/links/edit/${link.id}"
+        action="/cms/links/edit/${String(link.id)}"
         method="POST"
       >
         <header class="space-y-2">
@@ -31,7 +32,7 @@ export default (link: LinkEditFormData) =>
             <input
               type="text"
               name="title"
-              value="${escapeHtml(link.title)}"
+              value="${link.title}"
               class="w-full rounded-xl border border-dark-border bg-dark-bg/50 px-4 py-3 text-base text-white focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/50"
               required
             />
@@ -41,7 +42,7 @@ export default (link: LinkEditFormData) =>
             <input
               type="url"
               name="url"
-              value="${escapeHtml(link.url)}"
+              value="${link.url}"
               class="w-full rounded-xl border border-dark-border bg-dark-bg/50 px-4 py-3 text-base text-white focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/50"
               required
             />
@@ -52,7 +53,14 @@ export default (link: LinkEditFormData) =>
               name="comment"
               rows="4"
               class="w-full rounded-2xl border border-dark-border bg-dark-bg/50 px-4 py-3 text-base text-white focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/50"
-            >${escapeHtml(link.comment)}</textarea>
+            >${link.comment}</textarea>
+          </div>
+          <div class="space-y-2">
+            ${multiSelector(tags)}
+            <script
+              type="module"
+              src="/cms/static/components/multi-selector.js"
+            ></script>
           </div>
         </div>
 
